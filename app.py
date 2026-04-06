@@ -204,7 +204,7 @@ with col2:
 
                         audit(f"Bắt đầu xử lý – DB: {db_file.name}, Số ĐMVT: {len(formula_files)}")
                         db_df = pd.read_excel(db_file)
-                        templates_dir = "."
+                        templates_dir = "templates"
                         progress_text = st.empty()
                         progress_bar = st.progress(0)
 
