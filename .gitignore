@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Streamlit
+.streamlit/
+
+# Excel & Docx temporary files
+~$*.xlsx
+~$*.docx
+
+# Project Logs
+*.log
+
+# Project Outputs (Zips and Docs inside current folder)
+*.zip
+*.docx
+!templates/*.docx
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# System
+.DS_Store
+Thumbs.db

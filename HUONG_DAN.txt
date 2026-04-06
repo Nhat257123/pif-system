@@ -1,0 +1,157 @@
+╔══════════════════════════════════════════════════════════════╗
+║        HƯỚNG DẪN SỬ DỤNG – HỆ THỐNG PIF v2.2 Secured      ║
+║                    R&D Team © 2026                           ║
+╚══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  A. YÊU CẦU HỆ THỐNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  • Windows 10/11 (64-bit)
+  • Python 3.10 hoặc mới hơn
+    → Tải tại: https://python.org/downloads
+    → Khi cài: TICK ô "Add Python to PATH"
+  • Kết nối mạng nội bộ (LAN/Wi-Fi công ty)
+  • RAM tối thiểu: 4GB
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B. CÀI ĐẶT LẦN ĐẦU (chỉ làm 1 lần)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. Giải nén file ZIP vào thư mục: vd. C:\PIF_System\
+  2. Đảm bảo cấu trúc thư mục như sau:
+
+     PIF_System\
+     ├── app.py
+     ├── pif_backend.py
+     ├── requirements.txt
+     ├── run_pif.bat
+     ├── backup_pif.bat
+     ├── doi_mat_khau.bat
+     ├── HUONG_DAN.txt          ← file này
+     ├── .streamlit\
+     │   └── config.toml
+     ├── 1.4_ban_cong_bo_...docx
+     ├── 1.5_cong_bo_an_toan...docx
+     ├── 1.6_tom_tat_...docx
+     ├── 1.7_bao_cao_...docx
+     ├── 2.10_du_lieu_...docx
+     ├── 4.15_bao_cao_...docx
+     └── 4.18.1_bao_cao_...docx
+
+  3. Đặt 7 file template .docx vào CÙNG thư mục với app.py
+     (như sơ đồ trên).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  C. KHỞI ĐỘNG ỨNG DỤNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. Double-click vào file: run_pif.bat
+  2. Cửa sổ đen (CMD) sẽ hiện ra và tự động:
+     • Cài đặt thư viện (lần đầu mất 1–3 phút)
+     • Khởi động server
+  3. Trình duyệt tự động mở tại: http://localhost:8501
+     (nếu không tự mở, gõ địa chỉ này vào Chrome/Edge)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  D. TÀI KHOẢN MẶC ĐỊNH (ĐỔI NGAY SAU KHI CÀI!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ┌────────────────┬───────────────┬────────────────┐
+  │ Tên đăng nhập │ Mật khẩu      │ Vai trò        │
+  ├────────────────┼───────────────┼────────────────┤
+  │ admin          │ admin123      │ Quản trị viên  │
+  │ rd_user        │ rd2026        │ Nhân viên R&D  │
+  └────────────────┴───────────────┴────────────────┘
+
+  ⚠️ QUAN TRỌNG: Đổi mật khẩu ngay!
+  Xem hướng dẫn đổi mật khẩu ở mục F bên dưới.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  E. CÁCH SỬ DỤNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Bước 1: Đăng nhập bằng tài khoản được cấp.
+
+  Bước 2: Ở cột trái "Cấu hình & Tải lên":
+    • Tải lên File tổng hợp thông tin NL (file T01 .xlsx)
+    • Tải lên 1 hoặc nhiều file ĐMVT (.xlsx)
+
+  Bước 3: Nhấn "BẮT ĐẦU XỬ LÝ HỒ SƠ"
+    • Thanh tiến trình sẽ hiển thị từng file đang xử lý
+    • Quá trình thường mất 10–30 giây/sản phẩm
+
+  Bước 4: Nhấn "XEM DANH SÁCH TẢI XUỐNG"
+    • Mỗi sản phẩm có 1 nút "TẢI ZIP"
+    • ZIP chứa 7 tài liệu Word đã điền đầy đủ thông tin
+
+  Bước 5: Đăng xuất khi xong việc (Sidebar → Đăng xuất)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  F. ĐỔI MẬT KHẨU
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. Double-click file: doi_mat_khau.bat
+  2. Nhập tên đăng nhập và mật khẩu mới → Lấy hash
+  3. Mở file app.py bằng Notepad (hoặc VS Code)
+  4. Tìm đoạn AUTHORIZED_USERS (khoảng dòng 18–22):
+
+       AUTHORIZED_USERS = {
+           "admin":   "240be518...",   ← thay hash ở đây
+           "rd_user": "ef92b778...",   ← thay hash ở đây
+       }
+
+  5. Thay hash cũ bằng hash mới → Lưu file → Khởi động lại
+
+  Để THÊM người dùng mới, thêm 1 dòng:
+       "ten_dang_nhap": "hash_sha256",
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  G. TRUY CẬP TỪ MÁY KHÁC TRONG MẠNG NỘI BỘ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. Tìm IP của máy chạy server:
+     → Mở CMD → gõ: ipconfig
+     → Tìm "IPv4 Address", ví dụ: 192.168.1.100
+
+  2. Từ máy khác, mở trình duyệt và truy cập:
+     http://192.168.1.100:8501
+
+  3. Nếu không kết nối được, kiểm tra Windows Firewall:
+     → Control Panel → Windows Defender Firewall
+     → Advanced Settings → Inbound Rules
+     → New Rule → Port → TCP 8501 → Allow
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  H. XEM NHẬT KÝ HOẠT ĐỘNG (AUDIT LOG)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  File: pif_audit.log (tự động tạo trong thư mục cài đặt)
+  Nội dung ghi lại: đăng nhập, xử lý file, lỗi, đăng xuất.
+  Mở bằng Notepad để xem.
+
+  Ví dụ nội dung log:
+  2026-04-06 09:15:32 | INFO | [USER:admin] Đăng nhập thành công
+  2026-04-06 09:16:01 | INFO | [USER:admin] Bắt đầu xử lý – DB: T01.xlsx
+  2026-04-06 09:16:04 | INFO | [USER:admin] Hoàn thành: sp_a.xlsx → 7 tài liệu
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  I. DỪNG ỨNG DỤNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Nhấn Ctrl+C trong cửa sổ CMD đang chạy, sau đó nhấn Y.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  J. XỬ LÝ SỰ CỐ THƯỜNG GẶP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ❌ "Python không được nhận dạng"
+     → Cài lại Python, tick "Add to PATH"
+
+  ❌ "Port 8501 đang được sử dụng"
+     → Tắt ứng dụng PIF cũ, hoặc tắt máy rồi mở lại
+
+  ❌ Không tải được thư viện
+     → Kiểm tra kết nối internet → Chạy lại run_pif.bat
+
+  ❌ Lỗi khi xử lý file Excel
+     → Kiểm tra định dạng cột trong file ĐMVT
+     → Xem file pif_audit.log để biết chi tiết
+
+  ❌ Không mở được http://localhost:8501
+     → Đảm bảo cửa sổ CMD vẫn đang chạy
+     → Thử http://127.0.0.1:8501
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Liên hệ hỗ trợ: R&D Team nội bộ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
