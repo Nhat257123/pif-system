@@ -2,16 +2,17 @@
 chcp 65001 > nul
 cd /d "%~dp0"
 
-title HE THONG HO SO DU LIEU PIF v2.2 Secured
+title HE THONG HO SO DU LIEU PIF v2.3 Portable
+set "VENV_DIR=.venv"
 
 echo.
 echo ╔══════════════════════════════════════════════════════╗
-echo ║       HE THONG HO SO DU LIEU PIF  (v2.2 Secured)   ║
-echo ║                  R^&D Team © 2026                    ║
-echo ╚══════════════════════════════════════════════════════╝
+10: echo ║       HE THONG HO SO DU LIEU PIF (v2.3 Portable)   ║
+11: echo ║                  R^&D Team © 2026                    ║
+12: echo ╚══════════════════════════════════════════════════════╝
 echo.
 
-:: Check Python
+:: 1. Check Python
 python --version > nul 2>&1
 if %errorlevel% neq 0 (
     echo [LOI] Khong tim thay Python. Vui long cai Python 3.10+ va thu lai.
@@ -21,51 +22,57 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo [1/3] Kiem tra va cap nhat thu vien (co the mat vai phut lan dau)...
-python -m pip install -r requirements.txt --quiet
-if %errorlevel% neq 0 (
-    echo [LOI] Khong the cai dat thu vien. Kiem tra ket noi mang!
-    pause
-    exit /b 1
+:: 2. Check/Create Virtual Environment
+if not exist "%VENV_DIR%" (
+    echo [1/3] Dang tao moi truong ao (.venv)... co the mat 1-2 phut...
+    python -m venv %VENV_DIR%
+    if %errorlevel% neq 0 (
+        echo [LOI] Khong the tao moi truong ao.
+        pause
+        exit /b 1
+    )
 )
 
-echo [2/3] Thu vien da san sang.
-echo.
+:: 3. Activate VENV and Install Requirements
+echo [2/3] Dang kich hoat moi truong va kiem tra thu vien...
+call %VENV_DIR%\Scripts\activate
 
-:: Check port 8501
-netstat -an | find "8501" | find "LISTENING" > nul 2>&1
+:: Check internet connection before pip install (optional but good)
+ping -n 1 google.com > nul 2>&1
 if %errorlevel% == 0 (
-    echo [CANH BAO] Port 8501 dang duoc su dung boi tien trinh khac.
-    echo            Streamlit se tu dong chon port khac.
-    echo.
+    echo       Dang cap nhat thu vien tu Internet...
+    python -m pip install --upgrade pip --quiet
+    pip install -r requirements.txt --quiet
+) else (
+    echo       [CANH BAO] Khong co Internet. Se dung thu vien da co.
 )
 
-:: Get Local IP
-for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "IPv4" ^| findstr /i "192.168"') do set IP=%%a
-set IP=%IP: =%
-
+:: 4. Start Application
+echo.
 echo [3/3] Dang khoi dong ung dung...
 echo.
-echo ► Truy cap tai may nay : http://localhost:8501
+
+:: Get Local IP for LAN access
+for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "IPv4" ^| findstr /i "192.168"') do set "IP=%%a"
+set "IP=%IP: =%"
+
+echo ► May chu dang chay tai: http://localhost:8501
 if not "%IP%"=="" (
-    echo ► Truy cap tu may khac: http://%IP%:8501
+    echo ► Truy cap tu thiet bi khac: http://%IP%:8501
 )
 echo.
-echo ► Tai khoan mac dinh:
-echo     Quan tri vien : admin   / admin123
-echo     Nguoi dung RD  : rd_user / rd2026
-echo.
-echo [QUAN TRONG] Doi mat khau sau khi dang nhap lan dau!
-echo              Neu may khac khong vao duoc, hay kiem tra Firewall.
-echo.
-echo Nhan Ctrl+C de dung ung dung.
-echo ════════════════════════════════════════════════════════
+echo [TU DONG] Se mo trinh duyet sau 3 giay...
 echo.
 
-python -m streamlit run app.py --server.port 8501
+:: Start browser in background (timeout to let streamlit start)
+start /b cmd /c "timeout /t 3 > nul && start http://localhost:8501"
+
+:: Run Streamlit
+streamlit run app.py --server.port 8501 --server.headless false
+
 if %errorlevel% neq 0 (
     echo.
-    echo [LOI] Ung dung bi ngat. Xem log o tren de biet ly do.
+    echo [LOI] Ung dung bi dung dot ngot.
     pause
 )
 pause
