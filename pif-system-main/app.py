@@ -136,6 +136,15 @@ st.markdown("""
         border-radius: 12px; font-weight: 600; border: none; transition: all 0.3s;
         padding: 0.5rem;
     }
+    /* Style for Primary Button (XEM DANH SÁCH TẢI XUỐNG) */
+    div.stButton > button[data-testid="stBaseButton-primary"] {
+        background-color: #4A634E !important;
+        border: 1px solid #3d5240 !important;
+    }
+    div.stButton > button[data-testid="stBaseButton-primary"]:hover {
+        background-color: #5B7B61 !important;
+        border: 1px solid #4A634E !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -258,7 +267,7 @@ with col2:
             """, unsafe_allow_html=True)
         else:
             if not st.session_state.ready_to_show_downloads:
-                st.info("Hồ sơ đã sẵn sàng.")
+                st.info("✅ Hồ sơ đã sẵn sàng.")
                 if st.button("📂 XEM DANH SÁCH TẢI XUỐNG", type="primary"):
                     st.session_state.ready_to_show_downloads = True
                     st.rerun()
